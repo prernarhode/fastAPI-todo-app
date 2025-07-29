@@ -31,10 +31,14 @@ class Blog(BaseModel):
     body:str
     published:Optional[bool]
 
+@app.get('/add')
+def add(num1:int, num2:int):
+    return {"data":num1+num2}
+    
 @app.post('/blog')
 def create_blog(blog:Blog):
     return {'data': F'Blog is created as my{request.title}'}
 
 
-if __name__="__main__":
+if __name__=="__main__":
     uvicorn.run(app,host="127.0.0.1",port='9000')
